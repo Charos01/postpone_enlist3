@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>List Apps</title>
+    <link rel="stylesheet"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h2>List Apps</h2>
+    <hr/>
+    <table class = "table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Date Created</th>
+            <th>Date Modified</th>
+            <th>Paper</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="app: ${apps}">
+            <td th:text="${app.applicationId}"></td>
+            <td th:text="${app.dateCreated}"></td>
+            <td th:text="${app.dateModified}"></td>
+            <td th:text="${app.paper}"></td>
+            <td th:text="${app.status}"></td>
+            <td>
+                <a th:href="@{/aks/apps/approve(applicationId=${app.applicationId})}" class="btn btn-info">Approve</a>
+                <a th:href="@{/aks/apps/reject(applicationId=${app.applicationId})}" class="btn btn-danger ml-2">Reject</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+
+</html>
