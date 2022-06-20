@@ -108,5 +108,5 @@
   - name: Tear down existing services
     become_user: "test4"
     docker_compose:
-        project_src: /home/tests
+        project_src: /home/test4
         state: present
