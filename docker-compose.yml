@@ -19,7 +19,7 @@ services:
          - "80:8080"
        env_file: ./env-var
        depends_on:
-                db: 
+                db:
                    condition: service_healthy
     smtp:
       image: mailhog/mailhog:v1.0.1
@@ -28,5 +28,5 @@ services:
        - 8025:8025
 
 
-volumes:  
+volumes:
     mysqldbvol:
