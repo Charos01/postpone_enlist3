@@ -16,7 +16,7 @@
   - copy: 
       src: ./docker-compose.yml
       dest: ./docker-compose.yml
-      owner: test1
+      owner: test4
       mode: 0644
 
   # Install Docker
@@ -49,7 +49,7 @@
       update_cache: yes
 
   - name: add userpermissions
-    shell: "usermod -aG docker test1"
+    shell: "usermod -aG docker test4"
 
   # Installs Docker SDK
   # --
@@ -59,7 +59,7 @@
       name: python3-pip
   
   - name: install python sdk
-    become_user: "tests"
+    become_user: "test4"
     pip:
       name:
         - docker
@@ -77,14 +77,14 @@
     register: check_python
 
   - name: login to private docker repository
-    become_user: "test1"
+    become_user: "test4"
     docker_login:
       username: "charosRegistry"
       password: "W+uuvdVvHnau2lqgaqRX7bOeAfexMYxB"
       registry: "charosregistry.azurecr.io"
   
   - name: pull image azure
-    become_user: "test1"
+    become_user: "test4"
     docker_image:
      name: charosregistry.azurecr.io/charos/postpone:latest
      source: pull
@@ -106,7 +106,7 @@
   #      MYSQL_USER: admin
   #      MYSQL_PASSWORD: admin
   - name: Tear down existing services
-    become_user: "test1"
+    become_user: "test4"
     docker_compose:
         project_src: /home/tests
         state: present
