@@ -21,6 +21,7 @@ pipeline {
              '''
              sh '''
              whoami
+             ssh test1
              '''
             
             }
