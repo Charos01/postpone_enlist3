@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+    db:
+      image: mysql/mysql-server:latest
+      ports:
+        - "3306:3306"
+      environment:
+        - MYSQL_ROOT_PASSWORD=pass
+        - MYSQL_DATABASE=citizens
+        - MYSQL_USER=admin
+        - MYSQL_PASSWORD=admin
+      volumes:
+        - mysqldbvol:/val/lib/mysql
+        - ./db-startup:/docker-entrypoint-initdb.d
+    env-app:
+       image: charosregistry.azurecr.io/charos/postpone:latest
+       ports:
+         - "80:8080"
+       env_file: ./env-var
+       depends_on:
+                db: 
+                   condition: service_healthy
+    smtp:
+      image: mailhog/mailhog:v1.0.1
+      ports:
+       - 1025:1025
+       - 8025:8025
+
+
+volumes:  
+    mysqldbvol:
