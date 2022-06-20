@@ -20,9 +20,9 @@ public class MailSubmissionController {
 
     @RequestMapping("/mail")
     @ResponseStatus(HttpStatus.CREATED)
-    SimpleMailMessage send(String mail) {
+    SimpleMailMessage send() {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setTo(mail);
+        mailMessage.setTo("malaka");
         mailMessage.setReplyTo("charos@mailhog.gr");
         mailMessage.setFrom("someone@localhost");
         mailMessage.setSubject("Welcome message");
