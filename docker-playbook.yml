@@ -110,3 +110,9 @@
     docker_compose:
         project_src: /home/test4
         state: present
+
+#   - name: Restore database
+#     db:
+#      name: citizens
+#      state: import
+#      target: /startup.sql
