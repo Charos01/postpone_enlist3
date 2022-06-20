@@ -1,0 +1,112 @@
+---
+- hosts: all
+  
+  become: yes
+ 
+  # vars_files:
+  #   - vault.yml
+  # vars:
+  #   cli:
+  #     username:  username 
+  #     password:  password 
+
+
+  tasks:
+  
+  - copy: 
+      src: ./docker-compose.yml
+      dest: ./docker-compose.yml
+      owner: tests
+      mode: 0644
+
+  # Install Docker
+  # --
+  # 
+  - name: install prerequisites
+    apt:
+      name:
+        - apt-transport-https
+        - ca-certificates 
+        - curl 
+        - gnupg-agent
+        - software-properties-common
+      update_cache: yes
+
+  - name: add apt-key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+
+  - name: add docker repo
+    apt_repository:
+      repo: deb https://download.docker.com/linux/ubuntu focal stable
+
+  - name: install docker 
+    apt:
+      name: 
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+      update_cache: yes
+
+  - name: add userpermissions
+    shell: "usermod -aG docker tests"
+
+  # Installs Docker SDK
+  # --
+  # 
+  - name: install python package manager
+    apt:
+      name: python3-pip
+  
+  - name: install python sdk
+    become_user: "tests"
+    pip:
+      name:
+        - docker
+        - docker-compose
+  
+  # - name: Log into private registry and force re-authorization
+  #   docker_login:
+  #    registry: charosregistry.azurecr.io
+  #    provider: cli 
+
+  - name: Check for Python
+    raw: test -e /usr/bin/python
+    changed_when: false
+    failed_when: false
+    register: check_python
+
+  - name: login to private docker repository
+    become_user: "tests"
+    docker_login:
+      username: "charosRegistry"
+      password: "W+uuvdVvHnau2lqgaqRX7bOeAfexMYxB"
+      registry: "charosregistry.azurecr.io"
+  
+  - name: pull image azure
+    become_user: "tests"
+    docker_image:
+     name: charosregistry.azurecr.io/charos/postpone:latest
+     source: pull
+  
+ 
+  
+  # - name: Create a data container
+  #   become_user: "tests"
+  #   docker_container:
+  #    name: ergasia
+  #    image: mysql/mysql-server:latest
+  #    volumes:
+  #     - /val/lib/mysql
+  #    ports:
+  #    - "3306:3306"
+  #    env:
+  #      MYSQL_ROOT_PASSWORD: pass
+  #      MYSQL_DATABASE: citizens
+  #      MYSQL_USER: admin
+  #      MYSQL_PASSWORD: admin
+  - name: Tear down existing services
+    become_user: "tests"
+    docker_compose:
+        project_src: /home/tests
+        state: present
