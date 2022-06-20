@@ -34,6 +34,7 @@ public class LoginSuccesController {
         RedirectView redirectView = new RedirectView();
         if (request.isUserInRole("USER")) {
             redirectView.setUrl("/cityzen");
+
             return redirectView;
         } else if (request.isUserInRole("ADMIN")) {
             redirectView.setUrl("/admin/users");
