@@ -116,8 +116,7 @@
         project_src: /home/test4
         build: no
         restarted: yes
-        register: output
-
+        
 #   - name: Restore database
 #     db:
 #      name: citizens
