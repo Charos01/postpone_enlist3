@@ -5,11 +5,16 @@ spring.datasource.password=admin
 spring.thymeleaf.prefix=classpath:/templates/
 spring.jpa.show-sql=true
 upload.path=./
-mail.protocol=email
-mail.host=localhost
-mail.port=smtp
+mail.protocol=smtp
+mail.host=smtp
+mail.port=1025
 mail.smtp.auth=false
 mail.smtp.starttls.enable=false
 mail.from=me@localhost
 application.username =panos
 application.password=panos
+
+
+
+
+
