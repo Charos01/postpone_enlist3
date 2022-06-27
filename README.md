@@ -1,4 +1,4 @@
---
+-
 docker run --name ergasia -v mysqldbvol:/val/lib/mysql -p 3306:3306 -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin -e MYSQL_DATABASE=citizens -e MYSQL_ROOT_PASSWORD=pass --rm -d mysql/mysql-server:latest
 
 CREATE TABLE IF NOT EXISTS user ( ADT varchar(50) NOT NULL , name varchar(50) NOT NULL , lastname varchar(50) NOT NULL , email varchar(50) NOT NULL , username varchar(50) NOT NULL, password varchar(100) NOT NULL, militarynumber varchar(50) NOT NULL, PRIMARY KEY (ADT) ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
