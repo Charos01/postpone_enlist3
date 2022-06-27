@@ -28,7 +28,7 @@ pipeline {
        }
         stage('Ansible'){
             steps { 
-                ansiblePlaybook becomeUser: 'jenkins', installation: 'ansible', inventory: './hosts.yml', playbook: 'docker-playbook.yml'
+                ansiblePlaybook becomeUser: 'jenkins', installation: 'ansible', inventory: './hosts.yml', playbook: 'docker-playbook.yml', vaultCredentialsId: 'mykey'
             }
         }
         }
