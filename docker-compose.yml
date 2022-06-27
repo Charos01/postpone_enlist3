@@ -11,7 +11,7 @@ services:
         - MYSQL_USER=admin
         - MYSQL_PASSWORD=admin
       volumes:
-        - mysqldbvol:/val/lib/mysql
+        - mysqldbvol:/var/lib/mysql
         - ./db-startup:/docker-entrypoint-initdb.d
     env-app:
        image: charosregistry.azurecr.io/charos/postpone:latest
