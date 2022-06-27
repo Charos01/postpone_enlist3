@@ -35,7 +35,7 @@
    
   - copy: 
       src: ./startup.sql
-    dest: ./db-startup/startup.sql
+      dest: ./db-startup/startup.sql
       owner: test4
       mode: 0644
   # Install Docker
