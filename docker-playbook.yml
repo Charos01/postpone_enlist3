@@ -105,17 +105,18 @@
   #      MYSQL_DATABASE: citizens
   #      MYSQL_USER: admin
   #      MYSQL_PASSWORD: admin
+  - name: down
+    become_user: "test4"
+    docker_compose:
+        project_src: /home/test4
+        state: absent
   - name: up
     become_user: "test4"
     docker_compose:
         project_src: /home/test4
         state: present
    
-  - name: down
-    become_user: "test4"
-    docker_compose:
-        project_src: /home/test4
-        state: absent
+ 
 #   - name: Restore database
 #     db:
 #      name: citizens
