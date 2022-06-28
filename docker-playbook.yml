@@ -109,7 +109,7 @@
           3861643439633136663733343939366237363535303866393066
       registry: "charosregistry.azurecr.io"
   
-   - name: Remove image
+  - name: Remove image
     docker_image:
     state: absent
     name: charosregistry.azurecr.io/charos/postpone
