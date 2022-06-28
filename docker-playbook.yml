@@ -109,6 +109,12 @@
           3861643439633136663733343939366237363535303866393066
       registry: "charosregistry.azurecr.io"
   
+  - name: down
+    become_user: "test4"
+    docker_compose:
+        project_src: /home/test4
+        state: absent
+  
   - name: Remove image
     become_user: "test4"
     docker_image:
@@ -141,11 +147,7 @@
   #      MYSQL_PASSWORD: admin
  
     
-  - name: down
-    become_user: "test4"
-    docker_compose:
-        project_src: /home/test4
-        state: absent
+ 
   - name: up
     become_user: "test4"
     docker_compose:
