@@ -12,21 +12,19 @@ height: 1080px;
 background: transparent url('D:\μαθήματα σχολής\κατανεμημένα συστήματα\HellenicArmy.png') 0% 0% no-repeat padding-box;
 opacity: 1;">--->
 <body style="background-color:powderblue;">
-<br><a id="new" href="">ΝΕΑ ΑΙΤΗΣΗ</a></br>
+<br><a id="new" href="http://enlist.ddns.net/newApplication">ΝΕΑ ΑΙΤΗΣΗ</a></br>
 <br><a id="change" href="http://enlist.ddns.net/changes">ΤΡΟΠΟΠΟΙΗΣΗ ΗΔΗ ΥΠΑΡΧΟΥΣΑΣ</a></br>
-<a href="http://www.army.gr/" target="_blank"><img src="D:\μαθήματα σχολής\κατανεμημένα συστήματα\HellenicArmy.png" alt="HellenicArmy" width="500" height="600" class="aligncenter"></a>
-
 </body>
 <script type="text/javascript">
     window.addEventListener('load',(event)=>{
         document.getElementById('new').addEventListener('click',(event)=>{
             const xhr = new XMLHttpRequest();
-            xhr.open('GET','http://localhost:8080/app',true);
+            xhr.open('GET','/app',true);
             xhr.send();
             xhr.onreadystatechange = function(){
 
                 if(xhr.status == 200){
-                    window.location.assign("http://localhost:8080/app");
+                    window.location.assign("/app");
                 }
             }
 
