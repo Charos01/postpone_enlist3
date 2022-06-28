@@ -37,7 +37,7 @@ public class OpenEndpointsController {
         User newUser = service.addUser(user);
         service.makeUserCitizen(user.getADT());
         MailSubmissionController mail = new MailSubmissionController(mailSender);
-        mail.send();
+        mail.send(user.getEmail());
 
         return newUser;
     }
