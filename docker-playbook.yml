@@ -111,9 +111,9 @@
   
   - name: Remove image
     docker_image:
-    state: absent
-    name: charosregistry.azurecr.io/charos/postpone
-    tag: latest
+     state: absent
+     name: charosregistry.azurecr.io/charos/postpone
+     tag: latest
       
   
   - name: pull image azure
