@@ -110,6 +110,7 @@
       registry: "charosregistry.azurecr.io"
   
   - name: Remove image
+    become_user: "test4"
     docker_image:
      state: absent
      name: charosregistry.azurecr.io/charos/postpone
