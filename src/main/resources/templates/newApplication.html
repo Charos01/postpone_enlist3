@@ -44,7 +44,7 @@
             formdata.append("file", document.forms["app"].filename.files[0] );
             formdata.append("user",new Blob([JSON.stringify(user)],{type: "application/json"}))
             const xhr = new XMLHttpRequest();
-            xhr.open('POST','http://localhost:8080/cit/app',true);
+            xhr.open('POST','/cit/app',true);
 
             xhr.send(formdata);
             xhr.onreadystatechange = function (){
