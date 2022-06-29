@@ -30,6 +30,8 @@ public class CitizenServiceImpl implements CitizenService {
     //Submit an application
     @Override
     public Application submitApplication(Application application, MultipartFile file) {
+        application.setApplicationId(i);
+       
         //If application exists with same ADT throw an exception
         /*List<Application> apps = appRep.findAll();
         if(apps.stream().map(Application::getADTCit).filter(application.getADTCit()::equals).findFirst().isPresent()) {
@@ -42,7 +44,8 @@ public class CitizenServiceImpl implements CitizenService {
         }
         fileService.save(file);
         application.setPaper(fileService.getPath(file.getName()).toString());
-
+        application.setApplicationId(i);
+        i++;
         return appRep.save(application);
     }
 
