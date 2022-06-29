@@ -30,7 +30,7 @@ public class CitizenServiceImpl implements CitizenService {
     //Submit an application
     @Override
     public Application submitApplication(Application application, MultipartFile file) {
-        application.setApplicationId(i);
+        int i= 10;
        
         //If application exists with same ADT throw an exception
         /*List<Application> apps = appRep.findAll();
