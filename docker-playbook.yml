@@ -13,30 +13,30 @@
 
   tasks:
   
-  - copy: Compose
+  - copy:
       src: ./docker-compose.yml
       dest: ./docker-compose.yml
-      owner: test4,deploy
+      owner: test4
       mode: 0644
    
   - copy: 
       src: ./env-var
       dest: ./env-var
-      owner: test4 , deploy
+      owner: test4 
       mode: 0644
   
   - name: ansible set permission recursvely for a directory
     file:
       path: /db-startup
       state: directory
-      owner: test4 , deploy
+      owner: test4 
       mode: 0644
       recurse: yes
    
   - copy: 
       src: ./startup.sql
       dest: ./db-startup/startup.sql
-      owner: test4 , deploy
+      owner: test4 
       mode: 0644
   # Install Docker
   # --
