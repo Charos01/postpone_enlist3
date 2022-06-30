@@ -13,10 +13,10 @@
 
   tasks:
   
-  - copy: 
+  - copy: Compose
       src: ./docker-compose.yml
       dest: ./docker-compose.yml
-      owner: test4 , deploy
+      owner: test4,deploy
       mode: 0644
    
   - copy: 
