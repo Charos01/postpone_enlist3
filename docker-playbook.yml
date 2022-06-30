@@ -16,7 +16,7 @@
   - copy:
       src: ./docker-compose.yml
       dest: ./docker-compose.yml
-      owner: all
+      owner: test4
       mode: 0644
    
   - copy: 
