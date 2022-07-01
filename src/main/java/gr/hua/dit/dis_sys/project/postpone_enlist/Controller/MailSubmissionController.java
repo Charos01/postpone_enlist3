@@ -24,9 +24,9 @@ public class MailSubmissionController {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(maill);
         mailMessage.setReplyTo("charos@mailhog.gr");
-        mailMessage.setFrom("someone@localhost");
+        mailMessage.setFrom("stratologia@mailhog.gr");
         mailMessage.setSubject("Welcome message");
-        mailMessage.setText("Welcomee!!");
+        mailMessage.setText("Welcomee!Υour registration is complete");
         javaMailSender.send(mailMessage);
         return mailMessage;
     }
